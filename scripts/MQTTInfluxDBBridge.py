@@ -20,6 +20,8 @@ MQTT_TOPIC = 'solar/+/+/power'
 MQTT_TOPIC2 = 'solar/+/+/voltage'
 MQTT_TOPIC3 = 'solar/+/+/yieldday'
 MQTT_TOPIC4 = 'solar/+/+/frequency'
+MQTT_TOPIC5 = 'solar/+/+/efficiency'
+MQTT_TOPIC6 = 'solar/+/+/temperature'
 MQTT_REGEX = 'solar/([^/]+)/([^/]+)/([^/]+)'
 MQTT_CLIENT_ID = 'MQTTInfluxDBBridge'
 
@@ -37,6 +39,8 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(MQTT_TOPIC2)
     client.subscribe(MQTT_TOPIC3)
     client.subscribe(MQTT_TOPIC4)
+    client.subscribe(MQTT_TOPIC5)
+    client.subscribe(MQTT_TOPIC6)
 
 def _parse_mqtt_message(topic, payload):
     match = re.match(MQTT_REGEX, topic)
